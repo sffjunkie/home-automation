@@ -1,0 +1,38 @@
+# Home Assistant
+*.csr
+*.crt
+*.key
+**/home-assistant/*.conf
+known_devices.yaml
+secrets.yaml
+
+# Mosquitto
+cloudmqtt.conf
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.py[cod]
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+.cache
+.coverage
+.project
+.pydevproject
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+*.iml

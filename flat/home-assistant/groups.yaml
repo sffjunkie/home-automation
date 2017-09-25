@@ -1,0 +1,101 @@
+default_view:
+  view: yes
+  entities:
+    - group._scenes
+    - group.weather
+    - group.downstairs_lights
+    - group.upstairs_lights
+    - group.alarmclock
+
+media_view:
+  name: Media
+  view: yes
+  entities:
+    - group.radio
+    - group.music_off
+    - group.kitchen_media
+    - group.lounge_media
+    - group.bedroom_media
+
+status_view:
+  name: Status
+  view: yes
+  entities:
+    - group.battery
+
+kitchen_media:
+  entities:
+    - media_player.kitchen
+    - media_player.kitchen_tv
+
+lounge_media:
+  entities:
+    - media_player.shield
+
+bedroom_media:
+  entities:
+     - media_player.main_bedroom
+
+downstairs_lights:
+  name: Downstairs Lights
+  entities:
+    - light.entrance
+    - light.study_ceiling
+    - light.desk_lamp
+
+upstairs_lights:
+  name: Upstairs Lights
+  entities:
+    - light.landing
+    - light.bed_side_light
+
+weather:
+  name: Current Weather
+  entities:
+    - sun.sun
+    - sensor.weather_summary
+    - sensor.weather_temperature
+    - sensor.weather_apparent_temperature
+    - sensor.weather_cloud_coverage
+
+alarmclock:
+  name: Wake Me Up
+  entities:
+    - sensor.alarm_time
+    - input_slider.alarm_hour
+    - input_slider.alarm_minute
+    - input_boolean.alarm_workday
+    - input_boolean.alarm_status
+
+music_off:
+  name: Turn Music Off
+  entities:
+    - input_select.mediaplayeroff_mediaplayer
+    - sensor.mediaplayeroff_time
+    - input_slider.mediaplayeroff_hour
+    - input_slider.mediaplayeroff_minute
+    - input_boolean.mediaplayer_enable
+
+radio:
+  name: Play Radio
+  entities:
+    - input_select.radio_mediaplayer
+    - input_select.radio_station
+    - script.radio_play
+
+battery:
+  name: Battery Levels
+  entities:
+    - sensor.nexus_6p_battery_level
+    - sensor.nexus_7_battery_level
+    - sensor.pixel_c_battery_level
+
+_scenes:
+  name: Scenes
+  entities:
+    - scene.going_to_bed
+    - scene.in_bed
+    - scene.sleep
+    - scene.wake_up
+    - scene.away
+

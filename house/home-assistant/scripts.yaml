@@ -1,0 +1,40 @@
+radio_play:
+  alias: Play Radio
+  sequence:
+    - service: logbook.log
+      data:
+        name: "Play Radio"
+        message: >
+          {{states.input_select.radio_mediaplayer.state}}
+    - service: media_player.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("input_select.radio_mediaplayer", "Bedroom") %}
+            media_player.main_bedroom
+          {% elif is_state("input_select.radio_mediaplayer", "Lounge") %}
+            media_player.shield
+          {% elif is_state("input_select.radio_mediaplayer", "Kitchen") %}
+            media_player.kitchen
+          {% endif %}
+    - delay:
+        seconds: 1
+    - service: media_player.play_media
+      data_template:
+        entity_id: >
+          {% if is_state("input_select.radio_mediaplayer", "Bedroom") %}
+            media_player.main_bedroom
+          {% elif is_state("input_select.radio_mediaplayer", "Lounge") %}
+            media_player.shield
+          {% elif is_state("input_select.radio_mediaplayer", "Kitchen") %}
+            media_player.kitchen
+          {% endif %}
+        media_content_id: >
+          {% if is_state("input_select.radio_stations", "Radio 1") %}
+            http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_one.m3u8
+          {% elif is_state("input_select.radio_stations", "Radio 2") %}
+            http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_two.m3u8
+          {% elif is_state("input_select.radio_stations", "Radio 4") %}
+            http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_fourfm.m3u8
+          {% endif %}
+        media_content_type: application/x-mpegURL
+

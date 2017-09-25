@@ -1,0 +1,12 @@
+AppDaemon:
+  logfile: STDOUT
+  errorfile: STDERR
+  logsize: 100000
+  log_generations: 3
+  threads: 10
+  time_zone: Europe/London
+  api_port: 5000
+  api_key: !secret api_key_appdaemon
+
+#HASS:
+#  ha_key: !secret api_key_homeassistant

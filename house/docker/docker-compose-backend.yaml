@@ -1,0 +1,40 @@
+version: '3'
+services:
+  tsdb:
+    container_name: influxdb
+    image: influxdb:latest
+    network_mode: "host"
+    ports:
+      - "8086:8086"
+    volumes:
+      - /var/lib/influxdb:/var/lib/influxdb
+
+  graphing:
+    container_name: grafana
+    image: grafana/grafana:latest
+    network_mode: "host"
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/lib/grafana:/var/lib/grafana
+    depends_on:
+      - "tsdb"
+
+  mqtt:
+    container_name: mosquitto
+    image: eclipse-mosquitto:latest
+    network_mode: "host"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+        - /var/lib/mosquitto/conf:/mosquitto/config
+        - /var/lib/mosquitto/data:/mosquitto/data
+        - /var/lib/mosquitto/log:/mosquitto/log
+
+  db:
+    container_name: postgres
+    image: postgres:latest
+    network_mode: "host"
+    ports:
+      - "5432:5432"

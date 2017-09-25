@@ -1,0 +1,65 @@
+homeassistant:
+  name: Looniversity
+  latitude: !secret flat_latitude
+  longitude: !secret flat_longitude
+  elevation: 9.1
+  temperature_unit: C
+  time_zone: Europe/London
+
+  customize: !include customize.yaml
+
+zone:
+  name: Work
+  latitude: !secret work_latitude
+  longitude: !secret work_longitude
+  icon: mdi:briefcase
+
+
+input_slider: !include input_slider.yaml
+input_boolean: !include input_boolean.yaml
+input_select: !include input_select.yaml
+
+group: !include groups.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+script: !include scripts.yaml
+automation: !include automation.yaml
+
+#conversation:
+discovery:
+frontend:
+history:
+logbook:
+sun:
+updater:
+
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  username: hass
+  password: !secret mqtt_password
+  client_id: homeassistant
+
+
+device_tracker:
+  platform: nmap_tracker
+  hosts: 192.168.1.1/16
+  home_interval: 10
+  track_new_devices: yes
+
+device_tracker owntracks:
+  platform: owntracks
+
+
+media_player:
+  - platform: cast
+
+  - platform: plex
+
+
+light:
+  platform: hue
+  host: 192.168.1.7
+  allow_unreachable: true
