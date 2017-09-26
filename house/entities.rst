@@ -1,20 +1,37 @@
-porch
-entrance / hall / hallway
-lounge / family room
+entrance (porch)
+hall / hallway
+
+lounge
+lounge uplighters
+lounge uplighter right
+lounge uplighter left
+lounge lamps
+lounge lamp right
+lounge lamp left
+
 study
-desk
+study ceiling
+study desk
+
 kitchen
+kitchen ceiling
+kitchen worktop
+
+bedroom
+bedroom ceiling
+bedroom lamp
+
 node zero / pantry
 garage
 back garden
 front garden
 pantry
 stairs
-main bedroom
+
 guest bedroom
+
 en suite
-main bathroom
-family bathroom
+bathroom
 landing
 closet
 loft
