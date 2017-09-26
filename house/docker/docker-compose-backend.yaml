@@ -10,6 +10,15 @@ services:
       - /var/lib/influxdb/config/influxdb.conf:/etc/influxdb/influxdb.conf:ro
       - /var/lib/influxdb:/var/lib/influxdb
 
+  tsdb_ui:
+    container_name: chronograf
+    image: quay.io/influxdb/chronograf:latest
+    network_mode: "host"
+    ports:
+      - "8888:8888"
+    environment:
+      INFLUXDB_URL: http://127.0.0.1:8086
+
   graphing:
     container_name: grafana
     image: grafana/grafana:latest
