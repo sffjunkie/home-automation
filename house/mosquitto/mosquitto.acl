@@ -1,2 +1,3 @@
 user home-assistant
 topic readwrite #
+topic read $SYS/#
