@@ -28,7 +28,7 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-        - /var/lib/mosquitto/conf:/mosquitto/config
+        - /var/lib/mosquitto/config:/mosquitto/config
         - /var/lib/mosquitto/data:/mosquitto/data
         - /var/lib/mosquitto/log:/mosquitto/log
 
