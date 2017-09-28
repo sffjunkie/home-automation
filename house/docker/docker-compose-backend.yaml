@@ -18,6 +18,8 @@ services:
       - "8888:8888"
     environment:
       INFLUXDB_URL: http://127.0.0.1:8086
+    depends_on:
+      - "tsdb"
 
   graphing:
     container_name: grafana
