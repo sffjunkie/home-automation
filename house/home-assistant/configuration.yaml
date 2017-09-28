@@ -55,6 +55,17 @@ media_player:
 #http:
 #  api_password: !secret api_key_homeassistant
 
+recorder:
+  db_url: !secret postgresql_connection
+  exclude:
+    domains:
+      - weblink
+      - updater
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
+
 mqtt:
   broker: !secret mqtt_host
   port: 1883
