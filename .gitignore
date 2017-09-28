@@ -1,10 +1,10 @@
-# Home Assistant
 *.csr
 *.crt
 *.key
 **/home-assistant/*.conf
 known_devices.yaml
 secrets.yaml
+.docker-env
 
 # Mosquitto
 cloudmqtt.conf
