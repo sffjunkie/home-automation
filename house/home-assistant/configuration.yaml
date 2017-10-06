@@ -85,6 +85,10 @@ light:
   allow_unreachable: true
 
 zwave:
+  usb_path: /zwavestick-usb
+
+rfxtrx:
+  device: /rfxtrx-usb
 
 #logger:
 #  default: warning
