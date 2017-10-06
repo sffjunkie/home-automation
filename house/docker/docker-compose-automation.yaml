@@ -12,8 +12,6 @@ services:
     devices:
       - "/dev/serial/by-id/usb-RFXCOM_RFXtrx433_06VTMY2H-if00-port0:/rfxtrx-usb"
       - "/dev/serial/by-id/usb-0658_0200-if00:/zwavestick-usb"
-    depends_on:
-      - "db"
 
   appdaemon:
     container_name: appdaemon
@@ -21,12 +19,10 @@ services:
     restart: always
     network_mode: "host"
     volumes:
-      - /var/lib/appdaemon/config:/config
+      - /var/lib/appdaemon/config:/conf
+      - /etc/localtime:/etc/localtime:ro
       # - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "5050:5050"
     expose:
       - "5000"
-    environment:
-      - HA_URL = http://home-assistant:8123
-      - DASH_URL = http://localhost:5050

@@ -52,8 +52,8 @@ media_player:
   - platform: plex
 
 
-#http:
-#  api_password: !secret api_key_homeassistant
+http:
+  api_password: !secret api_key_homeassistant
 
 recorder:
   db_url: !secret postgresql_connection
