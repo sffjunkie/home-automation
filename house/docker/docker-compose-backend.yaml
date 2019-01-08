@@ -7,8 +7,8 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - /var/lib/influxdb/config/influxdb.conf:/etc/influxdb/influxdb.conf:ro
-      - /var/lib/influxdb:/var/lib/influxdb
+      - /srv/influxdb/config/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - /srv/influxdb:/var/lib/influxdb
 
   tsdb_ui:
     container_name: chronograf
@@ -38,7 +38,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /var/lib/grafana:/var/lib/grafana
+      - /srv/grafana:/var/lib/grafana
     depends_on:
       - "tsdb"
 
@@ -50,9 +50,9 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-        - /var/lib/mosquitto/config:/mosquitto/config
-        - /var/lib/mosquitto/data:/mosquitto/data
-        - /var/lib/mosquitto/log:/mosquitto/log
+        - /srv/mosquitto/config:/mosquitto/config
+        - /srv/mosquitto/data:/mosquitto/data
+        - /srv/mosquitto/log:/mosquitto/log
 
   db:
     container_name: postgres
@@ -63,7 +63,7 @@ services:
     env_file:
       - ".docker-env"
     volumes:
-        - /var/lib/postgresql:/var/lib/postgresql
+        - /srv/postgresql:/var/lib/postgresql
 
   samba:
     image: dperson/samba
@@ -72,5 +72,5 @@ services:
       - "139:139"
       - "445:445"
     volumes:
-      - /var/lib/samba:/etc/samba
+      - /srv/samba:/etc/samba
 

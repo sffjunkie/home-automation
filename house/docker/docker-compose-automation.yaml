@@ -6,7 +6,7 @@ services:
     restart: always
     network_mode: "host"
     volumes:
-      - /var/lib/home-assistant/config:/config
+      - /srv/home-assistant/config:/config
       - /etc/localtime:/etc/localtime:ro
       # - /etc/letsencrypt:/etc/letsencrypt
     devices:
@@ -19,7 +19,7 @@ services:
     restart: always
     network_mode: "host"
     volumes:
-      - /var/lib/appdaemon/config:/conf
+      - /srv/appdaemon/config:/conf
       - /etc/localtime:/etc/localtime:ro
       # - /etc/letsencrypt:/etc/letsencrypt
     ports:
