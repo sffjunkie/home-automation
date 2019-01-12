@@ -1,1 +1,1 @@
-docker-compose up -d -f docker-compose-backend.yaml -f docker-compose-automation.yaml
+docker-compose -f docker-compose-backend.yaml -f docker-compose-automation.yaml up -d
