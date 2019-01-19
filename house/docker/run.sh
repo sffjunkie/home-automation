@@ -1,1 +1,1 @@
-docker-compose -f docker-compose-backend.yaml -f docker-compose-automation.yaml up -d
+docker-compose -f backend.yaml -f automation.yaml -f unifi.yaml up -d $1
