@@ -1,4 +1,7 @@
 version: '3'
+volumes:
+  grafana:
+
 services:
   tsdb:
     container_name: influxdb
@@ -38,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /srv/grafana:/var/lib/grafana
+      - grafana:/var/lib/grafana
     depends_on:
       - "tsdb"
 
