@@ -1,0 +1,35 @@
+light.desk_lamp:
+  friendly_name: Study Desk
+light.study_ceiling:
+  friendly_name: Study Ceiling
+
+sensor.weather_summary:
+  friendly_name: Summary
+sensor.weather_apparent_temperature:
+  friendly_name: Feels Like
+sensor.weather_temperature:
+  friendly_name: Temperature
+sensor.weather_cloud_coverage:
+  icon: mdi:cloud
+  friendly_name: Cloud Coverage
+
+sensor.nexus_6p_battery_level:
+  icon: mdi:cellphone-android
+sensor.nexus_7_battery_level:
+  icon: mdi:tablet-android
+sensor.pixel_c_battery_level:
+  icon: mdi:tablet-android
+
+media_player.kitchen:
+  friendly_name: Kitchen (Speakers)
+media_player.kitchen_tv:
+  friendly_name: Kitchen (TV)
+media_player.shield:
+  friendly_name: Lounge TV
+media_player.main_bedroom:
+  friendly_name: Bedroom (Speakers)
+media_player.main_bedroom_2:
+  friendly_name: House Audio
+
+script.radio_play:
+  icon: mdi:play

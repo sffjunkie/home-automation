@@ -1,0 +1,14 @@
+- platform: mqtt
+  name: "Lounge TV"
+  state_topic:   "harmony-api/state"
+  command_topic: "harmony-api/activities/sky-tv/command"
+  qos: 0
+  value_template: '{{ value }}'
+
+- platform: mqtt
+  name: "Current Actvity"
+  state_topic: "harmony-api/current_activity"
+  command_topic: "harmony-api/current_activity"
+  qos: 0
+  value_template: '{{ value }}'
+
