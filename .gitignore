@@ -5,6 +5,14 @@
 known_devices.yaml
 secrets.yaml
 .docker-env
+home-assistant_v2.db
+custom_components
+www
+tts
+.storage
+.cloud
+.uuid
+.HA_VERSION
 
 # Mosquitto
 cloudmqtt.conf

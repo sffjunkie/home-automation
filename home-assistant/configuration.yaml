@@ -1,20 +1,40 @@
 homeassistant:
-  name: Looniversity
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  elevation: !secret home_elevation
-  temperature_unit: C
-  unit_system: metric
-  time_zone: Europe/London
+    name: Looniversity
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    elevation: !secret home_elevation
+    temperature_unit: C
+    unit_system: metric
+    time_zone: !secret home_timezone
 
-  customize: !include customize.yaml
+    customize: !include customize.yaml
 
 zone:
-  name: Work
-  latitude: !secret work_latitude
-  longitude: !secret work_longitude
-  icon: mdi:briefcase
+    name: Work
+    latitude: !secret work_latitude
+    longitude: !secret work_longitude
+    icon: mdi:briefcase
 
+frontend:
+discovery:
+#conversation:
+sun:
+updater:
+
+# recorder:
+#     db_url: !secret recorder_db_url
+#     include:
+#         domains:
+#             - switch
+#             - automation
+#             - media_player
+#history:
+#logbook:
+
+influxdb:
+    host: !secret influxdb_host
+#  username: homeassistant
+#  password: !secret influxdb_password
 
 input_slider: !include input_slider.yaml
 input_boolean: !include input_boolean.yaml
@@ -27,70 +47,41 @@ switch: !include switches.yaml
 script: !include scripts.yaml
 automation: !include automation.yaml
 
-#conversation:
-discovery:
-frontend:
-history:
-logbook:
-sun:
-updater:
-
-
-#device_tracker:
-#  platform: nmap_tracker
-#  hosts: 192.168.0.1/24
-#  home_interval: 10
-#  track_new_devices: yes
-
-
-#device_tracker owntracks:
-#  platform: owntracks
-
-
 media_player:
-  - platform: cast
-  - platform: plex
-
-
-http:
-  api_password: !secret api_key_homeassistant
-
-recorder:
-  db_url: !secret postgresql_connection
-  exclude:
-    domains:
-      - weblink
-      - updater
-    entities:
-      - sun.sun
-      - sensor.last_boot
-      - sensor.date
+    - platform: cast
+    - platform: plex
 
 mqtt:
-  broker: !secret mqtt_host
-  port: 1883
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  client_id: home-assistant
-
-
-influxdb:
-  host: !secret influxdb_host
-#  username: homeassistant
-#  password: !secret influxdb_password
+    broker: !secret mqtt_host
+    username: !secret mqtt_username
+    password: !secret mqtt_password
+    client_id: home-assistant
+    port: 1883
 
 light:
-  platform: hue
-  host: !secret hue_host
-  allow_unreachable: true
+    platform: hue
+    host: !secret hue_host
+    allow_unreachable: true
 
+# The zwave usb stick is mapped to the following path by the docker-compose file
+# automation.yaml
 zwave:
-  usb_path: /zwavestick-usb
+    usb_path: /zwavestick-usb
 
+# The rfxtrx usb stick is mapped to the following path by the docker-compose file
+# automation.yaml
 rfxtrx:
-  device: /rfxtrx-usb
+    device: /rfxtrx-usb
+# logger:
+#     default: warning
+#     logs:
+#         homeassistant.components.device_tracker.mqtt: debug
 
-#logger:
-#  default: warning
-#  logs:
-#    homeassistant.components.device_tracker.mqtt: debug
+#device_tracker nmap:
+# platform: nmap_tracker
+# hosts: 192.168.0.1/24
+# home_interval: 10
+# track_new_devices: yes
+
+#device_tracker owntracks:
+#    platform: owntracks
