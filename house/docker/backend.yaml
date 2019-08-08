@@ -15,7 +15,7 @@ services:
 
     tsdb_ui:
         container_name: chronograf
-        image: quay.io/influxdb/chronograf:latest
+        image: chronograf:latest
         network_mode: "host"
         ports:
             - "8888:8888"
