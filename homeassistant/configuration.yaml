@@ -1,0 +1,136 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  # Customization file
+  customize: !include customize.yaml
+
+system_health:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes
+
+lovelace:
+  mode: yaml
+
+hacs:
+  token: 719df962366ae0a78faefea7fe6f5ed6926ce6ce
+  python_script: true
+  appdaemon: true
+  theme: true
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+#http:
+#  api_password: !secret api_password
+#  ssl_certificate: /config/certificate.pem
+#  ssl_key: /config/privkey.pem
+#  base_url: thebrain.acme.looniversity:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+# history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    mode: daily
+
+# Sensors
+sensor: !include sensors.yaml
+  # Weather prediction
+  #- platform: yr
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+media_player:
+  - platform: plex
+
+# Cloud
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - switch.kitchen_lamp
+        - switch.under_desk
+        - switch.cabinet
+        - input_boolean.night_mode
+        - input_boolean.away_mode
+
+#mqtt:
+#  broker: 192.168.1.3
+
+
+rfxtrx:
+  device: /rfxtrx-usb
+#  debug: true
+
+switch:
+  platform: rfxtrx
+  devices:
+    0b110001000ffc1601010f60:
+      name: Kitchen Lamp
+    0b110003000ffc1602010f60:
+      name: Under Desk
+    0b110005000ffc1603010f60:
+      name: Cabinet
+
+influxdb:
+  host: !secret influxdb_host
+  database: home-assistant
+  username: !secret influxdb_user
+  password: !secret influxdb_password
+  exclude:
+    domains:
+      - automation
+      - group
+
+light:
+  - platform: group
+    name: Lounge Lamps
+    entities:
+      - light.lounge_lamp_1
+      - light.lounge_lamp_2
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+#packages: !include_dir_named packages/
+input_boolean: !include booleans.yaml

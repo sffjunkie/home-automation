@@ -1,18 +1,20 @@
 *.csr
 *.crt
 *.key
-**/home-assistant/*.conf
-known_devices.yaml
+*.pem
+*.sqlite
+homeassistant/*.conf
 secrets.yaml
-.docker-env
+known_devices.yaml
 home-assistant_v2.db
-custom_components
-www
-tts
+.docker-env
 .storage
 .cloud
 .uuid
 .HA_VERSION
+custom_components
+www
+tts
 
 # Mosquitto
 cloudmqtt.conf

@@ -1,0 +1,11 @@
+media_player.bedroom_home:
+  icon: mdi-google-home
+media_player.kitchen_home:
+  icon: music-note
+switch.cabinet:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.under_desk:
+  icon: mdi:lightbulb
+  assumed_state: false
+

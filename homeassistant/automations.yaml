@@ -1,0 +1,30 @@
+- id: '1547404692961'
+  alias: Sun Down
+  trigger:
+  - event: sunset
+    offset: -00:20
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: light.lounge_lamp_1
+    service: light.turn_on
+  - data:
+      entity_id: light.lounge_lamp_2
+    service: light.turn_on
+  - data:
+      entity_id: switch.kitchen_lamp
+    service: switch.turn_on
+- id: '1549212556662'
+  alias: All Lights Off
+  trigger:
+  - at: '22:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.all_lights
+    service: light.turn_off
+  - data:
+      entity_id: switch.kitchen_lamp
+    service: switch.turn_off
