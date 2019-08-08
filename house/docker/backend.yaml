@@ -33,17 +33,6 @@ services:
             - "8092:8092"
             - "8094:8094"
 
-    graphing:
-        container_name: grafana
-        image: grafana/grafana:latest
-        network_mode: "host"
-        ports:
-            - "3000:3000"
-        volumes:
-            - grafana:/var/lib/grafana
-        depends_on:
-            - "tsdb"
-
     mqtt:
         container_name: mosquitto
         image: eclipse-mosquitto:latest
