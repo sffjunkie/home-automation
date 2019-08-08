@@ -1,0 +1,5 @@
+night_mode:
+    module: nightmode
+    class: NightMode
+    light: light.landing,light.bedroom
+    night_brightness: 10
