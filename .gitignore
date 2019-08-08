@@ -3,11 +3,15 @@
 *.key
 *.pem
 *.sqlite
-**/*.conf
+.docker-env
+
+# Hom Assistant files
+plex.conf
+phue.conf
+harmony_loungeharmonysc.conf
 secrets.yaml
 known_devices.yaml
 home-assistant_v2.db
-.docker-env
 .storage
 .cloud
 .uuid
