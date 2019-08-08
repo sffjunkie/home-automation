@@ -1,37 +1,36 @@
-version: '3'
+version: "3"
 services:
-  home-assistant:
-    container_name: home-assistant
-    image: homeassistant/home-assistant:latest
-    restart: always
-    network_mode: "host"
-    volumes:
-      - /srv/homeassistant:/config
-      - /etc/localtime:/etc/localtime:ro
-    devices:
-      - "/dev/serial/by-id/usb-RFXCOM_RFXtrx433_06VTMY2H-if00-port0:/rfxtrx-usb"
-      - "/dev/serial/by-id/usb-0658_0200-if00:/zwavestick-usb"
+    home-assistant:
+        container_name: home-assistant
+        image: homeassistant/home-assistant:latest
+        restart: always
+        network_mode: "host"
+        volumes:
+            - /srv/homeassistant:/config
+            - /etc/localtime:/etc/localtime:ro
+        devices:
+            - "/dev/serial/by-id/usb-RFXCOM_RFXtrx433_06VTMY2H-if00-port0:/rfxtrx-usb"
+            - "/dev/serial/by-id/usb-0658_0200-if00:/zwavestick-usb"
 
-  appdaemon:
-    container_name: appdaemon
-    image: acockburn/appdaemon:latest
-    restart: always
-    network_mode: "host"
-    volumes:
-      - /srv/appdaemon/config:/conf
-      - /etc/localtime:/etc/localtime:ro
-      # - /etc/letsencrypt:/etc/letsencrypt
-    ports:
-      - "5050:5050"
-      - "5000:5000"
+    appdaemon:
+        container_name: appdaemon
+        image: acockburn/appdaemon:latest
+        restart: always
+        network_mode: "host"
+        volumes:
+            - /srv/appdaemon/config:/conf
+            - /etc/localtime:/etc/localtime:ro
+            # - /etc/letsencrypt:/etc/letsencrypt
+        ports:
+            - "5050:5050"
+            - "5000:5000"
 
-  nodered:
-    container_name: node-red
-    image: nodered/node-red-docker:latest
-    restart: always
-    network_mode: "host"
-    volumes:
-      - /srv/nodered/data:/data
-    ports:
-      - "1880:1880"
-
+    nodered:
+        container_name: node-red
+        image: nodered/node-red-docker:v10
+        restart: always
+        network_mode: "host"
+        volumes:
+            - /srv/nodered/data:/data
+        ports:
+            - "1880:1880"
